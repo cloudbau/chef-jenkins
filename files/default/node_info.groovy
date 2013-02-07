@@ -23,8 +23,10 @@
 #
 */
 
-import jenkins.slaves.*
+import hudson.slaves.*
+import hudson.model.*
 import jenkins.model.*
+import jenkins.*
 
 def toJSON(node) {
   if (node instanceof Map) {
@@ -38,7 +40,7 @@ def toJSON(node) {
   }
 }
 
-slave = Jenkins.instance.getNode(this.args[0]) as Slave
+slave = Hudson.instance.getNode(this.args[0]) as Slave
 
 if (slave == null) {
   println "{}"
