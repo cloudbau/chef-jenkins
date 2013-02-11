@@ -146,7 +146,7 @@ ruby_block "block_until_operational" do
 end
 
 log "jenkins: install and start" do
-  notifies :install, "package[jenkins]", :immediately
+  notifies :upgrade, "package[jenkins]", :immediately
   notifies :start, "service[jenkins]", :immediately unless install_starts_service
   notifies :create, "ruby_block[block_until_operational]", :immediately
   not_if do
