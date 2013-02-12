@@ -61,20 +61,6 @@ file "#{node[:jenkins][:node][:home]}/.ssh/authorized_keys" do
   content node[:jenkins][:server][:pubkey]
 end
 
-cookbook_file "#{node[:jenkins][:node][:home]}/.ssh/id_rsa" do
-  source "node_ssh/id_rsa"
-  mode 0600
-  owner node[:jenkins][:node][:user]
-  group node[:jenkins][:node][:user]
-end
-
-cookbook_file "#{node[:jenkins][:node][:home]}/.ssh/id_rsa.pub" do
-  source "node_ssh/id_rsa.pub"
-  mode 0644
-  owner node[:jenkins][:node][:user]
-  group node[:jenkins][:node][:user]
-end
-
 jenkins_node node[:jenkins][:node][:name] do
   description  node[:jenkins][:node][:description]
   executors    node[:jenkins][:node][:executors]
